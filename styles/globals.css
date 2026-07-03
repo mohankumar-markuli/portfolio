@@ -84,6 +84,60 @@ a {
   padding: 8rem 0 4rem;
 }
 
+/* Rich Text Tables & Spacing Structure */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2.5rem 0;
+  font-size: 0.95rem;
+  background-color: var(--bg-secondary);
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+th, td {
+  padding: 0.85rem 1.25rem;
+  text-align: left;
+  line-height: 1.5;
+}
+
+th {
+  background-color: rgba(139, 92, 246, 0.1); /* Violet Tint */
+  color: var(--accent-cyan) !important;       /* Electric Violet text */
+  font-weight: 600;
+  border-bottom: 2px solid var(--border-color);
+}
+
+td {
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-secondary);
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+tr:hover td {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--border-color);
+  margin: 2.5rem 0;
+}
+
+/* Make tables scrollable on mobile viewports */
+@media (max-width: 768px) {
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
 /* Scrollbar Customization */
 ::-webkit-scrollbar {
   width: 8px;
