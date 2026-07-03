@@ -413,28 +413,33 @@ export default function Home() {
               <h4 style={{ color: 'var(--accent-cyan)', marginBottom: '0.5rem', fontWeight: 600 }}>Portfolio</h4>
               <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>View projects and tech reports</p>
             </Link>
+
+            <Link href="/experience" className="card" style={{ textAlign: 'center', display: 'block' }}>
+              <h4 style={{ color: 'var(--accent-green)', marginBottom: '0.5rem', fontWeight: 600 }}>Experience</h4>
+              <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>View professional timeline &amp; career</p>
+            </Link>
             
             <Link href="/blog" className="card" style={{ textAlign: 'center', display: 'block' }}>
-              <h4 style={{ color: 'var(--accent-green)', marginBottom: '0.5rem', fontWeight: 600 }}>Blog</h4>
+              <h4 style={{ color: 'var(--accent-purple)', marginBottom: '0.5rem', fontWeight: 600 }}>Blog</h4>
               <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Read articles on web &amp; AI tech</p>
             </Link>
 
             <Link href="/photography" className="card" style={{ textAlign: 'center', display: 'block' }}>
-              <h4 style={{ color: 'var(--accent-purple)', marginBottom: '0.5rem', fontWeight: 600 }}>Photography</h4>
-              <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Browse categories of self-hosted photos</p>
+              <h4 style={{ color: 'var(--accent-cyan)', marginBottom: '0.5rem', fontWeight: 600 }}>Gallery</h4>
+              <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Browse university, work, and network photos</p>
             </Link>
 
             <Link href="/skills" className="card" style={{ textAlign: 'center', display: 'block' }}>
-              <h4 style={{ color: 'var(--text-primary)', marginBottom: '0.5rem', fontWeight: 600 }}>Skills</h4>
+              <h4 style={{ color: 'var(--accent-green)', marginBottom: '0.5rem', fontWeight: 600 }}>Skills</h4>
               <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Browse stack by category</p>
             </Link>
           </div>
           
           <div style={{ display: 'flex', gap: '1.25rem', justifyContent: 'center', marginTop: '3rem', flexWrap: 'wrap' }}>
-            <Link href="/contact" className="btn btn-primary">
+            <Link href="/contact#hiring" className="btn btn-primary">
               Hire Me
             </Link>
-            <Link href="/freelance" className="btn btn-secondary">
+            <Link href="/contact#freelance" className="btn btn-secondary">
               Freelance Request
             </Link>
           </div>

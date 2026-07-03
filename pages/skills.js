@@ -6,69 +6,136 @@ export default function Skills() {
       title: 'Programming Languages',
       color: 'var(--accent-cyan)',
       skills: [
-        { name: 'JavaScript', level: 'Expert' },
-        { name: 'TypeScript', level: 'Advanced' },
-        { name: 'Python', level: 'Expert' },
-        { name: 'C', level: 'Intermediate' },
-        { name: 'Bash & Shell', level: 'Advanced' }
+        { name: 'JavaScript', level: 'Expert', iconSlug: 'js' },
+        { name: 'TypeScript', level: 'Advanced', iconSlug: 'ts' },
+        { name: 'Python', level: 'Expert', iconSlug: 'py' },
+        { name: 'C', level: 'Intermediate', iconSlug: 'c' },
+        { name: 'Bash & Shell', level: 'Advanced', iconSlug: 'bash' }
       ]
     },
     {
       title: 'Backend Engineering',
       color: 'var(--accent-green)',
       skills: [
-        { name: 'Node.js', level: 'Expert' },
-        { name: 'Express.js', level: 'Expert' },
-        { name: 'REST APIs', level: 'Expert' },
-        { name: 'AI Chatbots (RAG)', level: 'Advanced' }
+        { name: 'Node.js', level: 'Expert', iconSlug: 'nodejs' },
+        { name: 'Express.js', level: 'Expert', iconSlug: 'express' },
+        { name: 'REST APIs', level: 'Expert' }, // Uses custom API icon
+        { name: 'AI Chatbots (RAG)', level: 'Advanced' } // Uses custom AI icon
       ]
     },
     {
       title: 'Databases & Storage',
       color: 'var(--accent-cyan)',
       skills: [
-        { name: 'MongoDB', level: 'Advanced' },
-        { name: 'PostgreSQL', level: 'Advanced' },
-        { name: 'Vector DBs', level: 'Intermediate' }
+        { name: 'MongoDB', level: 'Advanced', iconSlug: 'mongodb' },
+        { name: 'PostgreSQL', level: 'Advanced', iconSlug: 'postgres' },
+        { name: 'Vector DBs', level: 'Intermediate' } // Uses custom DB icon
       ]
     },
     {
       title: 'Analytics & Machine Learning',
       color: 'var(--accent-green)',
       skills: [
-        { name: 'Scikit-learn', level: 'Advanced' },
+        { name: 'Scikit-learn', level: 'Advanced', iconSlug: 'sklearn' },
         { name: 'Pandas & Numpy', level: 'Advanced' },
-        { name: 'Data Visualization', level: 'Expert' },
-        { name: 'Business Analytics', level: 'Expert' }
+        { name: 'Data Visualization', level: 'Expert' }, // Custom chart icon
+        { name: 'Business Analytics', level: 'Expert' } // Custom telemetry icon
       ]
     },
     {
       title: 'Infrastructure & DevOps',
       color: 'var(--accent-cyan)',
       skills: [
-        { name: 'Azure', level: 'Intermediate' },
-        { name: 'Linux Servers', level: 'Advanced' },
-        { name: 'Raspberry Pi / IoT', level: 'Intermediate' },
-        { name: 'Git & GitHub Actions', level: 'Advanced' }
+        { name: 'Azure', level: 'Intermediate', iconSlug: 'azure' },
+        { name: 'Linux Servers', level: 'Advanced', iconSlug: 'linux' },
+        { name: 'Raspberry Pi / IoT', level: 'Intermediate', iconSlug: 'raspberrypi' },
+        { name: 'Git & GitHub Actions', level: 'Advanced', iconSlug: 'githubactions' }
       ]
     },
     {
       title: 'Frontend & Tooling',
       color: 'var(--accent-green)',
       skills: [
-        { name: 'HTML5 & CSS3', level: 'Expert' },
-        { name: 'Bootstrap', level: 'Expert' },
-        { name: 'VS Code & Postman', level: 'Expert' },
-        { name: 'npm', level: 'Expert' }
+        { name: 'HTML5 & CSS3', level: 'Expert', iconSlugs: ['html', 'css'] },
+        { name: 'Bootstrap', level: 'Expert', iconSlug: 'bootstrap' },
+        { name: 'VS Code & Postman', level: 'Expert', iconSlugs: ['vscode', 'postman'] },
+        { name: 'npm', level: 'Expert', iconSlug: 'npm' }
       ]
     }
   ];
 
+  const renderSkillIcon = (skill, color) => {
+    if (skill.iconSlug) {
+      return (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img 
+          src={`https://skillicons.dev/icons?i=${skill.iconSlug}`} 
+          alt={skill.name} 
+          style={{ width: '20px', height: '20px', borderRadius: '4px', display: 'block' }} 
+        />
+      );
+    }
+    
+    if (skill.iconSlugs) {
+      return (
+        <div style={{ display: 'flex', gap: '3px' }}>
+          {skill.iconSlugs.map((slug, idx) => (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img 
+              key={idx}
+              src={`https://skillicons.dev/icons?i=${slug}`} 
+              alt={slug} 
+              style={{ width: '18px', height: '18px', borderRadius: '3px', display: 'block' }} 
+            />
+          ))}
+        </div>
+      );
+    }
+
+    // Dynamic Vector SVG Fallbacks
+    if (skill.name.includes('AI') || skill.name.includes('Chatbots')) {
+      return (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color, display: 'block' }}>
+          <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" />
+          <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+          <line x1="12" x2="12" y1="19" y2="22" />
+        </svg>
+      );
+    }
+    if (skill.name.includes('API')) {
+      return (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color, display: 'block' }}>
+          <rect width="8" height="8" x="3" y="3" rx="2" />
+          <rect width="8" height="8" x="13" y="3" rx="2" />
+          <rect width="8" height="8" x="3" y="13" rx="2" />
+          <rect width="8" height="8" x="13" y="13" rx="2" />
+        </svg>
+      );
+    }
+    if (skill.name.includes('Vector DB')) {
+      return (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color, display: 'block' }}>
+          <ellipse cx="12" cy="5" rx="9" ry="3" />
+          <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
+          <path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3" />
+        </svg>
+      );
+    }
+    // Analytics/Data Vis fallback
+    return (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color, display: 'block' }}>
+        <line x1="18" x2="18" y1="20" y2="10" />
+        <line x1="12" x2="12" y1="20" y2="4" />
+        <line x1="6" x2="6" y1="20" y2="14" />
+      </svg>
+    );
+  };
+
   return (
     <>
       <Head>
-        <title>Skills &amp; Technology Stack | Mohankumar MC</title>
-        <meta name="description" content="View the comprehensive technical skills and stack of Mohankumar MC including backend engineering, AI, and business analytics." />
+        <title>Skills &amp; Technology Stack | Mohankumar Markuli Chandrayigowda</title>
+        <meta name="description" content="View the comprehensive technical skills and stack of Mohankumar Markuli Chandrayigowda including backend engineering, AI, and business analytics." />
       </Head>
 
       <section style={{ maxWidth: '950px', margin: '0 auto', width: '100%' }}>
@@ -102,15 +169,19 @@ export default function Skills() {
                 {category.title}
               </h3>
               
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', flexGrow: 1 }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', flexGrow: 1 }}>
                 {category.skills.map((skill, skillIndex) => (
                   <div key={skillIndex}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.9rem', marginBottom: '0.4rem' }}>
-                      <span style={{ color: 'var(--text-primary)', fontWeight: 500 }}>{skill.name}</span>
+                    {/* Header: Logo, Name, and Level on top of bar */}
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.9rem', marginBottom: '0.5rem' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                        {renderSkillIcon(skill, category.color)}
+                        <span style={{ color: 'var(--text-primary)', fontWeight: 500 }}>{skill.name}</span>
+                      </div>
                       <span style={{ color: category.color, fontSize: '0.8rem', fontWeight: 600 }}>{skill.level}</span>
                     </div>
                     {/* Visual Meter */}
-                    <div style={{ height: '4px', background: 'rgba(255,255,255,0.04)', borderRadius: '2px', overflow: 'hidden' }}>
+                    <div style={{ height: '5px', background: 'rgba(255,255,255,0.04)', borderRadius: '2px', overflow: 'hidden' }}>
                       <div 
                         style={{ 
                           height: '100%', 

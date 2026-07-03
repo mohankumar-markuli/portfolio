@@ -35,13 +35,14 @@ export default function Navbar() {
   }, [isHome, router.pathname]);
 
   const navLinks = [
-    { name: 'Portfolio', path: '/portfolio' },
-    { name: 'Blog', path: '/blog' },
-    { name: 'Photography', path: '/photography' },
+    { name: 'Portfolio', path: '/' },
     { name: 'Skills', path: '/skills' },
-    { name: 'Hire Me', path: '/contact' },
+    { name: 'Experience', path: '/experience' },
+    { name: 'Blogs', path: '/blog' },
+    { name: 'Projects', path: '/portfolio' },
+    { name: 'Gallery', path: '/photography' },
     { name: 'Feedback', path: '/feedback' },
-    { name: 'Freelance', path: '/freelance' },
+    { name: 'Contact', path: '/contact' },
   ];
 
   // If we are on the landing page and not scrolled, do not show the navbar at all
