@@ -24,7 +24,7 @@ export default function Footer() {
             </svg>
           </a>
           <a 
-            href="https://www.linkedin.com/in/mohankumar-mc/" 
+            href="https://www.linkedin.com/in/mohankumar-markuli" 
             target="_blank" 
             rel="noopener noreferrer" 
             className="footer-social-link"
@@ -37,13 +37,27 @@ export default function Footer() {
             </svg>
           </a>
           <a 
-            href="mailto:mohankumarmarkuli@gmail.com" 
+            href="https://instagram.com/mohankumar-markuli" 
+            target="_blank" 
+            rel="noopener noreferrer" 
             className="footer-social-link"
-            aria-label="Email Contact"
+            aria-label="Instagram Profile"
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <rect width="20" height="16" x="2" y="4" rx="2" />
-              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+          <a 
+            href="https://www.snapchat.com/add/mohankumar-markuli" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="footer-social-link"
+            aria-label="Snapchat Profile"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M12 2a5 5 0 0 1 5 7v3c0 .8.2 1.4.8 2 .6.6.2 1.8-.8 1.8a2 2 0 0 0-2 2v1c0 1 1 2 2 2h.5c.8 0 1.5.7 1.5 1.5a1 1 0 0 1-1 1c-2 0-3-1.5-4.5-2.5a3 3 0 0 0-3 0c-1.5 1-2.5 2.5-4.5 2.5a1 1 0 0 1-1-1c0-.8.7-1.5 1.5-1.5h.5c1 0 2-1 2-2v-1a2 2 0 0 0-2-2c-1 0-1.4-1.2-.8-1.8.6-.6.8-1.2.8-2V7a5 5 0 0 1 5-5z" />
             </svg>
           </a>
         </div>

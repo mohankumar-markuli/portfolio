@@ -20,7 +20,7 @@ export default function ProjectCard({ title, description, tags = [], githubUrl, 
                 color: 'var(--accent-cyan)', 
                 padding: '0.25rem 0.6rem', 
                 borderRadius: '4px',
-                border: '1px solid rgba(6, 182, 212, 0.15)',
+                border: '1px solid rgba(239, 68, 68, 0.2)',
                 fontWeight: 500
               }}
             >
@@ -74,7 +74,7 @@ export default function ProjectCard({ title, description, tags = [], githubUrl, 
               flexGrow: 1, 
               width: '100%',
               textAlign: 'center', 
-              borderColor: 'rgba(16, 185, 129, 0.3)',
+              borderColor: 'rgba(239, 68, 68, 0.3)',
               color: 'var(--accent-green)'
             }}
           >

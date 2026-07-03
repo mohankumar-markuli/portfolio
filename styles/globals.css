@@ -5,16 +5,16 @@
   --bg-secondary: #111115;    /* Premium dark secondary background */
   --bg-glass: rgba(17, 17, 21, 0.75); /* Translucent background */
   --border-color: rgba(255, 255, 255, 0.06);
-  --border-hover: rgba(6, 182, 212, 0.4);
+  --border-hover: rgba(239, 68, 68, 0.4);
   
   --text-primary: #f8fafc;    /* High contrast off-white */
   --text-secondary: #94a3b8;  /* Elegant slate grey */
   --text-muted: #64748b;     /* Muted grey */
   
-  --accent-cyan: #06b6d4;     /* Electric cyan */
-  --accent-green: #10b981;    /* Emerald green */
-  --accent-purple: #8b5cf6;   /* Royal violet */
-  --accent-glow: rgba(6, 182, 212, 0.15);
+  --accent-cyan: #ffffff;     /* Pure White */
+  --accent-green: #ef4444;    /* Vibrant Red */
+  --accent-purple: #f43f5e;   /* Red-pink shade */
+  --accent-glow: rgba(239, 68, 68, 0.15);
   
   --font-sans: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'Fira Code', monospace;
