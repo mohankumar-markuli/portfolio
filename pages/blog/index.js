@@ -17,17 +17,17 @@ export default function BlogIndex({ allPostsData }) {
   return (
     <>
       <Head>
-        <title>Tech Blog | Mohankumar MC</title>
-        <meta name="description" content="Read articles on artificial intelligence, chatbot engineering, software systems, and data analytics by Mohankumar MC." />
+        <title>Blogs | Mohankumar Markuli Chandrayigowda</title>
+        <meta name="description" content="Read articles on AI ethics, big data analytics, EV technology, database systems, and personal narratives by Mohankumar Markuli Chandrayigowda." />
       </Head>
 
       <section style={{ maxWidth: '850px', margin: '0 auto', width: '100%' }}>
         <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
           <h1 style={{ fontSize: '2.5rem', fontWeight: 700, marginBottom: '1rem' }}>
-            Technical <span className="gradient-text">Blog</span>
+            Technical <span className="gradient-text">Blogs</span>
           </h1>
           <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', maxWidth: '600px', margin: '0 auto' }}>
-            Sharing engineering experiences, tutorials, and insights about full-stack architectures, vector database search, and machine learning models.
+            Articles and research papers covering artificial intelligence ethics, big data analytics, EV technology, database systems, and personal narratives.
           </p>
         </div>
 
@@ -82,6 +82,7 @@ export default function BlogIndex({ allPostsData }) {
               category={post.category}
               tags={post.tags}
               summary={post.summary}
+              externalUrl={post.externalUrl}
             />
           ))}
         </div>

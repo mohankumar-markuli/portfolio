@@ -1,222 +1,229 @@
 import Head from 'next/head';
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useState } from 'react';
+
+// REPLACE THIS WITH YOUR WHATSAPP PHONE NUMBER (including country code, e.g., "919187338626")
+const WHATSAPP_NUMBER = "919187338626";
 
 export default function Contact() {
-  const router = useRouter();
-  const [isHireLoading, setIsHireLoading] = useState(true);
-  const [isFreelanceLoading, setIsFreelanceLoading] = useState(true);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    purpose: 'Hiring',
+    message: ''
+  });
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  // Form URLs
-  const hireFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSdJt87w9Gz8dF5Mh-V8U53v27d4V_mockContactId/viewform?embedded=true";
-  const externalHireFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSdJt87w9Gz8dF5Mh-V8U53v27d4V_mockContactId/viewform";
-
-  const freelanceFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLScP-p1z7V1sH_mockFreelanceId/viewform?embedded=true";
-  const externalFreelanceFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLScP-p1z7V1sH_mockFreelanceId/viewform";
-
-  // Smooth scroll to anchors on hash mount
-  useEffect(() => {
-    if (router.asPath.includes('#')) {
-      const id = router.asPath.split('#')[1];
-      const element = document.getElementById(id);
-      if (element) {
-        setTimeout(() => {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }, 100);
-      }
-    }
-  }, [router.asPath]);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+    
+    // Simulate submission loading
+    setTimeout(() => {
+      setIsLoading(false);
+      setIsSubmitted(true);
+      
+      // Format text message for WhatsApp
+      const formattedMessage = `*New Inquiry via Portfolio*\n\n` +
+        `*Name:* ${formData.name}\n` +
+        `*Email:* ${formData.email}\n` +
+        `*Purpose:* ${formData.purpose}\n\n` +
+        `*Message:* ${formData.message}`;
+      
+      const encodedText = encodeURIComponent(formattedMessage);
+      const whatsappUrl = `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encodedText}`;
+      
+      window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    }, 1000);
+  };
 
   return (
     <>
       <Head>
         <title>Work With Me | Mohankumar Markuli Chandrayigowda</title>
-        <meta name="description" content="Hire Mohankumar Markuli Chandrayigowda for full-time career roles or submit a freelance project proposal." />
+        <meta name="description" content="Get in touch with Mohankumar Markuli Chandrayigowda for full-time engineering roles, freelance project proposals, or collaborative opportunities." />
       </Head>
 
-      <section style={{ width: '100%' }}>
+      <section style={{ maxWidth: '650px', margin: '0 auto', width: '100%', padding: '2rem 0' }}>
         <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
           <h1 style={{ fontSize: '2.5rem', fontWeight: 700, marginBottom: '1rem' }}>
             Work <span className="gradient-text">With Me</span>
           </h1>
-          <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', maxWidth: '600px', margin: '0 auto' }}>
-            Whether you are looking to hire me for a full-time engineering role or want to collaborate on a freelance project, you can find both intake channels below.
+          <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.6 }}>
+            Have a project in mind, a job opportunity, or just want to collaborate? Use the unified form below to get in touch.
           </p>
         </div>
 
-        {/* Side-by-side or stacked container */}
-        <div 
-          style={{ 
-            display: 'flex', 
-            gap: '2rem', 
-            flexWrap: 'wrap', 
-            justifyContent: 'center',
-            width: '100%'
-          }}
-          className="forms-wrapper"
-        >
-          {/* Hire Me (Careers) Column */}
-          <div 
-            id="hiring"
-            style={{ 
-              flex: '1 1 350px', 
-              maxWidth: '550px',
-              display: 'flex',
-              flexDirection: 'column'
-            }}
-          >
-            <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
-              <h2 style={{ fontSize: '1.5rem', fontWeight: 600, color: 'var(--accent-cyan)', marginBottom: '0.5rem' }}>
-                Hiring (Full-Time / Careers)
-              </h2>
-              <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
-                For open roles, recruitment, technical contracting, or direct corporate inquiries.
-              </p>
-            </div>
-
-            <div className="form-iframe-container">
-              {isHireLoading && (
-                <div 
-                  style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: '100%',
-                    height: '100%',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    backgroundColor: 'var(--bg-secondary)',
-                    zIndex: 5
-                  }}
-                >
-                  <div style={{ textAlign: 'center' }}>
-                    <div 
-                      style={{
-                        width: '40px',
-                        height: '40px',
-                        border: '3px solid rgba(139,92,246,0.1)',
-                        borderTop: '3px solid var(--accent-cyan)',
-                        borderRadius: '50%',
-                        animation: 'spin 1s linear infinite',
-                        margin: '0 auto 1rem'
-                      }}
-                    ></div>
-                    <p style={{ color: 'var(--text-secondary)' }}>Loading Hiring Form...</p>
-                  </div>
-                </div>
-              )}
-
-              <iframe 
-                src={hireFormUrl}
-                className="form-iframe"
-                onLoad={() => setIsHireLoading(false)}
-                title="Hiring Form"
+        {isSubmitted ? (
+          <div className="card animate-fade-in" style={{ textAlign: 'center', padding: '3.5rem 2rem' }}>
+            <div style={{ fontSize: '3rem', marginBottom: '1.5rem' }}>💬</div>
+            <h2 style={{ fontSize: '1.6rem', fontWeight: 600, color: 'var(--accent-cyan)', marginBottom: '1rem' }}>
+              Inquiry Prepared!
+            </h2>
+            <p style={{ color: 'var(--text-secondary)', marginBottom: '2.5rem', lineHeight: 1.6 }}>
+              A new browser tab should have opened to send the message directly to my WhatsApp inbox. If it did not, please click the button below to initiate the chat manually.
+            </p>
+            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+              <button 
+                className="btn btn-primary"
+                onClick={() => {
+                  const formattedMessage = `*New Inquiry via Portfolio*\n\n` +
+                    `*Name:* ${formData.name}\n` +
+                    `*Email:* ${formData.email}\n` +
+                    `*Purpose:* ${formData.purpose}\n\n` +
+                    `*Message:* ${formData.message}`;
+                  const encodedText = encodeURIComponent(formattedMessage);
+                  window.open(`https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encodedText}`, '_blank', 'noopener,noreferrer');
+                }}
               >
-                Loading…
-              </iframe>
-            </div>
-
-            <div style={{ textAlign: 'center', marginTop: '1rem', color: 'var(--text-muted)', fontSize: '0.85rem' }}>
-              <p>
-                Having trouble?{' '}
-                <a 
-                  href={externalHireFormUrl} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  style={{ color: 'var(--accent-cyan)', textDecoration: 'underline' }}
-                >
-                  Open hiring form in new tab
-                </a>
-              </p>
+                Open WhatsApp Chat
+              </button>
+              <button 
+                className="btn btn-secondary" 
+                onClick={() => {
+                  setIsSubmitted(false);
+                  setFormData({ name: '', email: '', purpose: 'Hiring', message: '' });
+                }}
+              >
+                Send New Message
+              </button>
             </div>
           </div>
-
-          {/* Freelance Request Column */}
-          <div 
-            id="freelance"
+        ) : (
+          <form 
+            onSubmit={handleSubmit} 
+            className="card animate-fade-in" 
             style={{ 
-              flex: '1 1 350px', 
-              maxWidth: '550px',
-              display: 'flex',
-              flexDirection: 'column'
+              padding: '2.5rem', 
+              display: 'flex', 
+              flexDirection: 'column', 
+              gap: '1.5rem',
+              border: '1px solid var(--border-color)',
+              borderRadius: '12px'
             }}
           >
-            <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
-              <h2 style={{ fontSize: '1.5rem', fontWeight: 600, color: 'var(--accent-green)', marginBottom: '0.5rem' }}>
-                Freelance Projects
-              </h2>
-              <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
-                For custom API builds, AI chatbot setups, data analytics projects, or consulting briefs.
-              </p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+              <label htmlFor="name" style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', fontWeight: 500 }}>
+                Full Name
+              </label>
+              <input 
+                type="text" 
+                id="name" 
+                required 
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                placeholder="Enter your name"
+                style={{
+                  padding: '0.75rem 1rem',
+                  borderRadius: '6px',
+                  backgroundColor: 'var(--bg-primary)',
+                  border: '1px solid var(--border-color)',
+                  color: '#ffffff',
+                  fontSize: '0.95rem',
+                  outline: 'none',
+                  transition: 'var(--transition-fast)'
+                }}
+                className="form-input"
+              />
             </div>
 
-            <div className="form-iframe-container">
-              {isFreelanceLoading && (
-                <div 
-                  style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: '100%',
-                    height: '100%',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    backgroundColor: 'var(--bg-secondary)',
-                    zIndex: 5
-                  }}
-                >
-                  <div style={{ textAlign: 'center' }}>
-                    <div 
-                      style={{
-                        width: '40px',
-                        height: '40px',
-                        border: '3px solid rgba(255,204,0,0.1)',
-                        borderTop: '3px solid var(--accent-green)',
-                        borderRadius: '50%',
-                        animation: 'spin 1s linear infinite',
-                        margin: '0 auto 1rem'
-                      }}
-                    ></div>
-                    <p style={{ color: 'var(--text-secondary)' }}>Loading Freelance Form...</p>
-                  </div>
-                </div>
-              )}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+              <label htmlFor="email" style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', fontWeight: 500 }}>
+                Email Address
+              </label>
+              <input 
+                type="email" 
+                id="email" 
+                required 
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                placeholder="Enter your email address"
+                style={{
+                  padding: '0.75rem 1rem',
+                  borderRadius: '6px',
+                  backgroundColor: 'var(--bg-primary)',
+                  border: '1px solid var(--border-color)',
+                  color: '#ffffff',
+                  fontSize: '0.95rem',
+                  outline: 'none',
+                  transition: 'var(--transition-fast)'
+                }}
+                className="form-input"
+              />
+            </div>
 
-              <iframe 
-                src={freelanceFormUrl}
-                className="form-iframe"
-                onLoad={() => setIsFreelanceLoading(false)}
-                title="Freelance Form"
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+              <label htmlFor="purpose" style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', fontWeight: 500 }}>
+                Purpose of Reach Out
+              </label>
+              <select 
+                id="purpose" 
+                value={formData.purpose}
+                onChange={(e) => setFormData({ ...formData, purpose: e.target.value })}
+                style={{
+                  padding: '0.75rem 1rem',
+                  borderRadius: '6px',
+                  backgroundColor: 'var(--bg-primary)',
+                  border: '1px solid var(--border-color)',
+                  color: '#ffffff',
+                  fontSize: '0.95rem',
+                  outline: 'none',
+                  cursor: 'pointer',
+                  transition: 'var(--transition-fast)'
+                }}
+                className="form-input"
               >
-                Loading…
-              </iframe>
+                <option value="Hiring">Hiring / Career Opportunities</option>
+                <option value="Freelance">Freelance Projects / Consulting</option>
+                <option value="Collaboration">Collaboration / Open Source</option>
+                <option value="General Inquiry">General Reach Out</option>
+              </select>
             </div>
 
-            <div style={{ textAlign: 'center', marginTop: '1rem', color: 'var(--text-muted)', fontSize: '0.85rem' }}>
-              <p>
-                Having trouble?{' '}
-                <a 
-                  href={externalFreelanceFormUrl} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  style={{ color: 'var(--accent-green)', textDecoration: 'underline' }}
-                >
-                  Open freelance form in new tab
-                </a>
-              </p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+              <label htmlFor="message" style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', fontWeight: 500 }}>
+                Message
+              </label>
+              <textarea 
+                id="message" 
+                required 
+                rows="6"
+                value={formData.message}
+                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                placeholder="Describe your project, role details, or inquiry..."
+                style={{
+                  padding: '0.75rem 1rem',
+                  borderRadius: '6px',
+                  backgroundColor: 'var(--bg-primary)',
+                  border: '1px solid var(--border-color)',
+                  color: '#ffffff',
+                  fontSize: '0.95rem',
+                  outline: 'none',
+                  resize: 'vertical',
+                  transition: 'var(--transition-fast)'
+                }}
+                className="form-input"
+              />
             </div>
-          </div>
-        </div>
 
-        {/* Direct Email outreach fallback */}
-        <div style={{ textAlign: 'center', marginTop: '4rem', borderTop: '1px solid var(--border-color)', paddingTop: '2rem' }}>
-          <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', marginBottom: '1rem' }}>
-            Prefer direct messaging? Send me a mail at:
+            <button 
+              type="submit" 
+              className="btn btn-primary" 
+              disabled={isLoading}
+              style={{ padding: '0.8rem 1.5rem', fontSize: '1rem', marginTop: '0.5rem', cursor: 'pointer' }}
+            >
+              {isLoading ? 'Processing...' : 'Submit Inquiry'}
+            </button>
+          </form>
+        )}
+
+        {/* Direct Link Options */}
+        <div style={{ textAlign: 'center', marginTop: '3rem', borderTop: '1px solid var(--border-color)', paddingTop: '2rem' }}>
+          <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginBottom: '1rem' }}>
+            Prefer email? Write to:
           </p>
-          <a href="mailto:mohankumarmarkuli@gmail.com" className="btn btn-primary">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ marginRight: '6px', verticalAlign: 'middle' }}>
+          <a href="mailto:mohankumarmarkuli@gmail.com" className="btn btn-secondary" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <rect width="20" height="16" x="2" y="4" rx="2" />
               <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
             </svg>
@@ -225,32 +232,18 @@ export default function Contact() {
         </div>
 
         <style jsx global>{`
-          @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+          .form-input:focus {
+            border-color: var(--accent-cyan) !important;
+            box-shadow: 0 0 0 2px rgba(6, 182, 212, 0.15) !important;
           }
           
-          .form-iframe-container {
-            position: relative;
-            width: 100%;
-            height: 700px;
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-            background-color: var(--bg-secondary);
+          .animate-fade-in {
+            animation: fadeIn 0.4s ease-out forwards;
           }
           
-          .form-iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-          }
-          
-          /* Custom layout overrides for combined forms */
-          @media (max-width: 900px) {
-            .form-iframe-container {
-              height: 600px;
-            }
+          @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
           }
         `}</style>
       </section>

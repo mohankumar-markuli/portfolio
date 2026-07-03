@@ -10,12 +10,6 @@ export default function Portfolio() {
       githubUrl: 'https://github.com/mohankumar-markuli/pdf-loader-rag-pipeline'
     },
     {
-      title: 'Ethical Issues with the use of AI in Business Operations',
-      description: 'MSc Dissertation research-driven analysis addressing three critical ethical dimensions: job displacement from automation, accountability when AI systems fail, and jurisdictional conflicts across different country regulations. Published on Medium.',
-      tags: ['AI Ethics', 'MSc Dissertation', 'Business Operations', 'Medium Publication'],
-      githubUrl: 'https://github.com/mohankumar-markuli/ai-ethics-dissertation'
-    },
-    {
       title: 'News Aggregator API',
       description: 'A personalized news aggregation backend API with JWT authentication, user preference management, in-memory caching with background refresh to reduce external API calls, and full unit and integration test coverage.',
       tags: ['Node.js', 'Express', 'MongoDB', 'JWT', 'GNews API', 'Unit Testing'],

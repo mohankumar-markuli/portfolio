@@ -247,7 +247,7 @@ export default function Home() {
               fontWeight: 400
             }}
           >
-            Software Engineer &amp; AI Developer building scalable backend systems and intelligent chatbot solutions.
+            Software Engineer &amp; AI Developer building analytics-oriented backend systems, intelligent RAG pipelines, and conversational chatbot solutions.
           </p>
 
           <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', marginBottom: '3rem' }}>
@@ -409,9 +409,9 @@ export default function Home() {
               marginBottom: '2rem'
             }}
           >
-            <Link href="/portfolio" className="card" style={{ textAlign: 'center', display: 'block' }}>
-              <h4 style={{ color: 'var(--accent-cyan)', marginBottom: '0.5rem', fontWeight: 600 }}>Portfolio</h4>
-              <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>View projects and tech reports</p>
+            <Link href="/skills" className="card" style={{ textAlign: 'center', display: 'block' }}>
+              <h4 style={{ color: 'var(--accent-green)', marginBottom: '0.5rem', fontWeight: 600 }}>Skills</h4>
+              <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Browse stack by category</p>
             </Link>
 
             <Link href="/experience" className="card" style={{ textAlign: 'center', display: 'block' }}>
@@ -420,8 +420,13 @@ export default function Home() {
             </Link>
             
             <Link href="/blog" className="card" style={{ textAlign: 'center', display: 'block' }}>
-              <h4 style={{ color: 'var(--accent-purple)', marginBottom: '0.5rem', fontWeight: 600 }}>Blog</h4>
-              <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Read articles on web &amp; AI tech</p>
+              <h4 style={{ color: 'var(--accent-purple)', marginBottom: '0.5rem', fontWeight: 600 }}>Blogs</h4>
+              <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Read articles on AI ethics, big data, EV tech, and database systems</p>
+            </Link>
+
+            <Link href="/portfolio" className="card" style={{ textAlign: 'center', display: 'block' }}>
+              <h4 style={{ color: 'var(--accent-cyan)', marginBottom: '0.5rem', fontWeight: 600 }}>Projects</h4>
+              <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>View projects and tech reports</p>
             </Link>
 
             <Link href="/photography" className="card" style={{ textAlign: 'center', display: 'block' }}>
@@ -429,18 +434,15 @@ export default function Home() {
               <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Browse university, work, and network photos</p>
             </Link>
 
-            <Link href="/skills" className="card" style={{ textAlign: 'center', display: 'block' }}>
-              <h4 style={{ color: 'var(--accent-green)', marginBottom: '0.5rem', fontWeight: 600 }}>Skills</h4>
-              <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Browse stack by category</p>
+            <Link href="/feedback" className="card" style={{ textAlign: 'center', display: 'block' }}>
+              <h4 style={{ color: 'var(--accent-purple)', marginBottom: '0.5rem', fontWeight: 600 }}>Feedback</h4>
+              <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Read or write feedback and references</p>
             </Link>
           </div>
           
-          <div style={{ display: 'flex', gap: '1.25rem', justifyContent: 'center', marginTop: '3rem', flexWrap: 'wrap' }}>
-            <Link href="/contact#hiring" className="btn btn-primary">
-              Hire Me
-            </Link>
-            <Link href="/contact#freelance" className="btn btn-secondary">
-              Freelance Request
+          <div style={{ display: 'flex', justifyContent: 'center', marginTop: '3rem' }}>
+            <Link href="/contact" className="btn btn-primary" style={{ padding: '0.75rem 2rem', fontSize: '1rem' }}>
+              Get in Touch / Hire Me
             </Link>
           </div>
         </div>
