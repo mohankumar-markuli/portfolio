@@ -1,0 +1,216 @@
+import Head from 'next/head';
+import Link from 'next/link';
+
+export default function Home() {
+  return (
+    <>
+      <Head>
+        <title>Mohankumar MC | Personal Portfolio & Website</title>
+        <meta name="description" content="Personal portfolio of Mohankumar MC - Backend Developer and AI Engineer specializing in scalable web applications and chatbot solutions." />
+        <meta property="og:title" content="Mohankumar MC | Portfolio" />
+        <meta property="og:description" content="Backend Developer and AI Engineer portfolio displaying projects, technical blog, photography gallery, and freelance intake." />
+        <meta property="og:type" content="website" />
+      </Head>
+
+      {/* Landing Hero Section */}
+      <section 
+        style={{
+          height: '100vh',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          backgroundColor: '#000000',
+          position: 'relative',
+          padding: '2rem',
+          textAlign: 'center'
+        }}
+      >
+        <div style={{ maxWidth: '650px' }}>
+          <h1 
+            style={{ 
+              fontSize: 'clamp(2.5rem, 8vw, 4.5rem)', 
+              fontWeight: 800, 
+              color: '#ffffff',
+              letterSpacing: '-0.03em',
+              marginBottom: '1rem'
+            }}
+          >
+            Mohankumar MC
+          </h1>
+          <p 
+            style={{ 
+              fontSize: 'clamp(1rem, 4vw, 1.25rem)', 
+              color: 'var(--text-secondary)',
+              lineHeight: 1.6,
+              marginBottom: '2rem',
+              fontWeight: 400
+            }}
+          >
+            Software Engineer &amp; AI Developer building scalable backend systems and intelligent chatbot solutions.
+          </p>
+
+          <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', marginBottom: '3rem' }}>
+            <a 
+              href="https://github.com/mohankumar-markuli" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              style={{ color: 'var(--text-secondary)' }}
+              className="footer-social-link"
+              aria-label="GitHub"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+                <path d="M9 18c-4.51 2-5-2-7-2" />
+              </svg>
+            </a>
+            <a 
+              href="https://www.linkedin.com/in/mohankumar-mc/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              style={{ color: 'var(--text-secondary)' }}
+              className="footer-social-link"
+              aria-label="LinkedIn"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                <rect x="2" y="9" width="4" height="12" />
+                <circle cx="4" cy="4" r="2" />
+              </svg>
+            </a>
+            <a 
+              href="mailto:mohankumarmarkuli@gmail.com" 
+              style={{ color: 'var(--text-secondary)' }}
+              className="footer-social-link"
+              aria-label="Email"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <rect width="20" height="16" x="2" y="4" rx="2" />
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        {/* Scroll Indicator */}
+        <div 
+          style={{
+            position: 'absolute',
+            bottom: '2.5rem',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '0.5rem',
+            color: 'var(--text-muted)',
+            fontSize: '0.85rem'
+          }}
+        >
+          <span>Scroll to explore</span>
+          <svg 
+            width="20" 
+            height="20" 
+            viewBox="0 0 24 24" 
+            fill="none" 
+            stroke="currentColor" 
+            strokeWidth="2" 
+            strokeLinecap="round" 
+            strokeLinejoin="round"
+            style={{
+              animation: 'bounce 2s infinite'
+            }}
+          >
+            <line x1="12" y1="5" x2="12" y2="19" />
+            <polyline points="19 12 12 19 5 12" />
+          </svg>
+        </div>
+        
+        <style jsx global>{`
+          @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-8px); }
+            60% { transform: translateY(-4px); }
+          }
+        `}</style>
+      </section>
+
+      {/* Main Overview Section (reveals header on scroll past first fold) */}
+      <section 
+        style={{
+          padding: '6rem 1.5rem',
+          backgroundColor: 'var(--bg-primary)',
+          borderTop: '1px solid var(--border-color)',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center'
+        }}
+      >
+        <div style={{ maxWidth: '800px', width: '100%' }}>
+          <h2 
+            style={{ 
+              fontSize: '2.25rem', 
+              fontWeight: 700, 
+              marginBottom: '2rem', 
+              textAlign: 'center'
+            }}
+          >
+            About <span className="gradient-text">Me</span>
+          </h2>
+          
+          <div style={{ fontSize: '1.1rem', lineHeight: 1.8, color: 'var(--text-secondary)', marginBottom: '3rem' }}>
+            <p style={{ marginBottom: '1.5rem' }}>
+              I am a software engineer based in India, specializing in building responsive web applications and AI-powered chatbot systems. 
+              I hold an <strong>MSc in Business Analytics</strong> from the University of Liverpool, which equips me with a unique 
+              analytical approach to backend engineering and scalable system design.
+            </p>
+            <p style={{ marginBottom: '1.5rem' }}>
+              I focus on creating high-performance architectures, developing API integrations, and continuous learning. 
+              This portal acts as a central repository for my work, thoughts, and creative visual photography.
+            </p>
+          </div>
+
+          <h3 style={{ fontSize: '1.5rem', fontWeight: 600, marginBottom: '1.5rem', textAlign: 'center' }}>
+            Explore my work
+          </h3>
+
+          <div 
+            style={{ 
+              display: 'grid', 
+              gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', 
+              gap: '1.5rem',
+              width: '100%',
+              marginBottom: '2rem'
+            }}
+          >
+            <Link href="/portfolio" className="card" style={{ textAlign: 'center', display: 'block' }}>
+              <h4 style={{ color: 'var(--accent-cyan)', marginBottom: '0.5rem', fontWeight: 600 }}>Portfolio</h4>
+              <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>View projects and tech reports</p>
+            </Link>
+            
+            <Link href="/blog" className="card" style={{ textAlign: 'center', display: 'block' }}>
+              <h4 style={{ color: 'var(--accent-green)', marginBottom: '0.5rem', fontWeight: 600 }}>Blog</h4>
+              <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Read articles on web &amp; AI tech</p>
+            </Link>
+
+            <Link href="/photography" className="card" style={{ textAlign: 'center', display: 'block' }}>
+              <h4 style={{ color: 'var(--accent-purple)', marginBottom: '0.5rem', fontWeight: 600 }}>Photography</h4>
+              <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Browse categories of self-hosted photos</p>
+            </Link>
+
+            <Link href="/skills" className="card" style={{ textAlign: 'center', display: 'block' }}>
+              <h4 style={{ color: 'var(--text-primary)', marginBottom: '0.5rem', fontWeight: 600 }}>Skills</h4>
+              <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Browse stack by category</p>
+            </Link>
+          </div>
+          
+          <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+            <Link href="/freelance" className="btn btn-primary">
+              Hire Me for Freelance
+            </Link>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
