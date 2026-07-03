@@ -1,13 +1,196 @@
+import { useEffect, useRef } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 
 export default function Home() {
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    
+    let animationFrameId;
+    let stars = [];
+    const numStars = 180; // Increased star density
+    const mouse = { x: null, y: null };
+    
+    // Moon orbit states
+    let moonAngle = 0;
+    const moonSpeed = 0.004;
+    const moonSize = 16;
+    
+    const resizeCanvas = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      
+      // Initialize static star distribution
+      stars = [];
+      for (let i = 0; i < numStars; i++) {
+        stars.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          baseX: Math.random() * canvas.width,
+          baseY: Math.random() * canvas.height,
+          size: Math.random() * 3 + 1.2,
+          opacity: Math.random() * 0.8 + 0.2,
+          twinkleSpeed: Math.random() * 0.015 + 0.005,
+          twinkleDir: Math.random() > 0.5 ? 1 : -1,
+          rotation: Math.random() * Math.PI,
+          rotationSpeed: (Math.random() - 0.5) * 0.01
+        });
+      }
+    };
+    
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+    
+    const handleMouseMove = (e) => {
+      const rect = canvas.getBoundingClientRect();
+      mouse.x = e.clientX - rect.left;
+      mouse.y = e.clientY - rect.top;
+    };
+    
+    const handleMouseLeave = () => {
+      mouse.x = null;
+      mouse.y = null;
+    };
+    
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mouseleave', handleMouseLeave);
+    
+    const drawStar = (ctx, x, y, size, opacity, rotation) => {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.rotate(rotation);
+      ctx.beginPath();
+      ctx.moveTo(0, -size);
+      ctx.lineTo(size * 0.25, -size * 0.25);
+      ctx.lineTo(size, 0);
+      ctx.lineTo(size * 0.25, size * 0.25);
+      ctx.lineTo(0, size);
+      ctx.lineTo(-size * 0.25, size * 0.25);
+      ctx.lineTo(-size, 0);
+      ctx.lineTo(-size * 0.25, -size * 0.25);
+      ctx.closePath();
+      
+      // Twinkling white lighting effect
+      ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
+      ctx.shadowBlur = 12;
+      ctx.shadowColor = '#ffffff';
+      ctx.fill();
+      ctx.restore();
+    };
+
+    const drawMoon = (ctx, x, y, size) => {
+      ctx.save();
+      // Glow effect matching yellow accent
+      ctx.shadowBlur = 20;
+      ctx.shadowColor = 'var(--accent-green)';
+      
+      // Draw bright yellow base circle
+      ctx.beginPath();
+      ctx.arc(x, y, size, 0, Math.PI * 2);
+      ctx.fillStyle = 'var(--accent-green)';
+      ctx.fill();
+      
+      // Draw overlapping black circle to clip into a crescent
+      ctx.shadowBlur = 0; // Disable glow on the shade clip
+      ctx.beginPath();
+      ctx.arc(x + size * 0.45, y - size * 0.15, size * 0.95, 0, Math.PI * 2);
+      ctx.fillStyle = '#000000';
+      ctx.fill();
+      
+      ctx.restore();
+    };
+    
+    const animate = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      stars.forEach(star => {
+        // Repulsion physics from cursor
+        if (mouse.x !== null && mouse.y !== null) {
+          const dx = mouse.x - star.x;
+          const dy = mouse.y - star.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          const repelRadius = 240;
+          
+          if (distance < repelRadius) {
+            // Eased repelling force: stronger push when closer
+            const force = (repelRadius - distance) / repelRadius;
+            star.x -= (dx / distance) * force * 5.0;
+            star.y -= (dy / distance) * force * 5.0;
+          } else {
+            // Drift back to baseline
+            const dxBase = star.baseX - star.x;
+            const dyBase = star.baseY - star.y;
+            star.x += dxBase * 0.035;
+            star.y += dyBase * 0.035;
+          }
+        } else {
+          // Float back to baseline when cursor leaves
+          const dxBase = star.baseX - star.x;
+          const dyBase = star.baseY - star.y;
+          star.x += dxBase * 0.035;
+          star.y += dyBase * 0.035;
+        }
+        
+        // Gentle baseline drifting
+        star.baseX += (Math.random() - 0.5) * 0.15;
+        star.baseY += (Math.random() - 0.5) * 0.15;
+        
+        // Keep baseline bound
+        if (star.baseX < 0) star.baseX = canvas.width;
+        if (star.baseX > canvas.width) star.baseX = 0;
+        if (star.baseY < 0) star.baseY = canvas.height;
+        if (star.baseY > canvas.height) star.baseY = 0;
+        
+        // Twinkling cycle
+        star.opacity += star.twinkleSpeed * star.twinkleDir;
+        if (star.opacity >= 1) {
+          star.opacity = 1;
+          star.twinkleDir = -1;
+        } else if (star.opacity <= 0.1) {
+          star.opacity = 0.1;
+          star.twinkleDir = 1;
+        }
+        
+        star.rotation += star.rotationSpeed;
+        
+        drawStar(ctx, star.x, star.y, star.size, star.opacity, star.rotation);
+      });
+
+      // Update and draw revolving moon
+      moonAngle += moonSpeed;
+      // Orbit radii proportional to screen sizing
+      const orbitX = Math.max(canvas.width * 0.22, 190);
+      const orbitY = Math.max(canvas.height * 0.08, 60);
+      
+      const moonX = canvas.width / 2 + Math.cos(moonAngle) * orbitX;
+      // Elliptical height multiplier creating a 3D orbit slant
+      const moonY = canvas.height / 2 + Math.sin(moonAngle) * orbitY;
+      
+      drawMoon(ctx, moonX, moonY, moonSize);
+      
+      animationFrameId = requestAnimationFrame(animate);
+    };
+    
+    animate();
+    
+    return () => {
+      window.removeEventListener('resize', resizeCanvas);
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseleave', handleMouseLeave);
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, []);
+
   return (
     <>
       <Head>
-        <title>Mohankumar MC | Personal Portfolio & Website</title>
-        <meta name="description" content="Personal portfolio of Mohankumar MC - Backend Developer and AI Engineer specializing in scalable web applications and chatbot solutions." />
-        <meta property="og:title" content="Mohankumar MC | Portfolio" />
+        <title>Mohankumar Markuli Chandrayigowda | Personal Portfolio & Website</title>
+        <meta name="description" content="Personal portfolio of Mohankumar Markuli Chandrayigowda - Backend Developer and AI Engineer specializing in scalable web applications and chatbot solutions." />
+        <meta property="og:title" content="Mohankumar Markuli Chandrayigowda | Portfolio" />
         <meta property="og:description" content="Backend Developer and AI Engineer portfolio displaying projects, technical blog, photography gallery, and freelance intake." />
         <meta property="og:type" content="website" />
       </Head>
@@ -23,20 +206,36 @@ export default function Home() {
           backgroundColor: '#000000',
           position: 'relative',
           padding: '2rem',
-          textAlign: 'center'
+          textAlign: 'center',
+          overflow: 'hidden'
         }}
       >
-        <div style={{ maxWidth: '650px' }}>
+        {/* Interactive twinkling star canvas overlay */}
+        <canvas 
+          ref={canvasRef} 
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            pointerEvents: 'none',
+            zIndex: 1
+          }}
+        />
+
+        <div style={{ maxWidth: '800px', zIndex: 2, position: 'relative' }}>
           <h1 
             style={{ 
-              fontSize: 'clamp(2.5rem, 8vw, 4.5rem)', 
+              fontSize: 'clamp(2.25rem, 6.5vw, 4rem)', 
               fontWeight: 800, 
               color: '#ffffff',
               letterSpacing: '-0.03em',
-              marginBottom: '1rem'
+              marginBottom: '1rem',
+              lineHeight: 1.1
             }}
           >
-            Mohankumar MC
+            Mohankumar Markuli Chandrayigowda
           </h1>
           <p 
             style={{ 
@@ -102,6 +301,17 @@ export default function Home() {
             >
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M12 2a5 5 0 0 1 5 7v3c0 .8.2 1.4.8 2 .6.6.2 1.8-.8 1.8a2 2 0 0 0-2 2v1c0 1 1 2 2 2h.5c.8 0 1.5.7 1.5 1.5a1 1 0 0 1-1 1c-2 0-3-1.5-4.5-2.5a3 3 0 0 0-3 0c-1.5 1-2.5 2.5-4.5 2.5a1 1 0 0 1-1-1c0-.8.7-1.5 1.5-1.5h.5c1 0 2-1 2-2v-1a2 2 0 0 0-2-2c-1 0-1.4-1.2-.8-1.8.6-.6.8-1.2.8-2V7a5 5 0 0 1 5-5z" />
+              </svg>
+            </a>
+            <a 
+              href="mailto:mohankumarmarkuli@gmail.com" 
+              style={{ color: 'var(--text-secondary)' }}
+              className="footer-social-link"
+              aria-label="Email"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <rect width="20" height="16" x="2" y="4" rx="2" />
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
               </svg>
             </a>
           </div>
