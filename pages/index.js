@@ -226,13 +226,14 @@ export default function Home() {
 
         <div style={{ maxWidth: '800px', zIndex: 2, position: 'relative' }}>
           <h1 
+            className="gradient-text"
             style={{ 
               fontSize: 'clamp(2.25rem, 6.5vw, 4rem)', 
               fontWeight: 800, 
-              color: '#ffffff',
               letterSpacing: '-0.03em',
               marginBottom: '1rem',
-              lineHeight: 1.1
+              lineHeight: 1.1,
+              display: 'inline-block'
             }}
           >
             Mohankumar Markuli Chandrayigowda
@@ -429,9 +430,12 @@ export default function Home() {
             </Link>
           </div>
           
-          <div style={{ textAlign: 'center', marginTop: '3rem' }}>
-            <Link href="/freelance" className="btn btn-primary">
-              Hire Me for Freelance
+          <div style={{ display: 'flex', gap: '1.25rem', justifyContent: 'center', marginTop: '3rem', flexWrap: 'wrap' }}>
+            <Link href="/contact" className="btn btn-primary">
+              Hire Me
+            </Link>
+            <Link href="/freelance" className="btn btn-secondary">
+              Freelance Request
             </Link>
           </div>
         </div>

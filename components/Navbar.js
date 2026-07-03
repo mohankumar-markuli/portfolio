@@ -39,9 +39,9 @@ export default function Navbar() {
     { name: 'Blog', path: '/blog' },
     { name: 'Photography', path: '/photography' },
     { name: 'Skills', path: '/skills' },
-    { name: 'Contact', path: '/contact' },
+    { name: 'Hire Me', path: '/contact' },
     { name: 'Feedback', path: '/feedback' },
-    { name: 'Freelance Request', path: '/freelance' },
+    { name: 'Freelance', path: '/freelance' },
   ];
 
   // If we are on the landing page and not scrolled, do not show the navbar at all

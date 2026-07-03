@@ -1,20 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-  --bg-primary: #000000;      /* Pitch black background */
-  --bg-secondary: #0a0a0a;    /* Lighter dark secondary background */
-  --bg-glass: rgba(10, 10, 10, 0.75); /* Translucent background */
+  --bg-primary: #030712;      /* Obsidian dark background */
+  --bg-secondary: #090d16;    /* Deep slate navy secondary */
+  --bg-glass: rgba(3, 7, 18, 0.75); /* Translucent background */
   --border-color: rgba(255, 255, 255, 0.05);
-  --border-hover: rgba(255, 30, 66, 0.45);
+  --border-hover: rgba(139, 92, 246, 0.45);
   
-  --text-primary: #ffffff;    /* Pure White */
-  --text-secondary: #d4d4d8;  /* Light zinc grey */
-  --text-muted: #71717a;     /* Muted grey */
+  --text-primary: #f8fafc;    /* Off-white */
+  --text-secondary: #94a3b8;  /* Muted Slate */
+  --text-muted: #64748b;     /* Grey */
   
-  --accent-cyan: #ff1e42;     /* Bright Red */
-  --accent-green: #ffcc00;    /* Bright Yellow */
-  --accent-purple: #f97316;   /* Bright Orange */
-  --accent-glow: rgba(255, 30, 66, 0.15);
+  --accent-cyan: #8b5cf6;     /* Electric Violet */
+  --accent-green: #f97316;    /* Sunset Orange */
+  --accent-purple: #ec4899;   /* Coral Pink */
+  --accent-glow: rgba(139, 92, 246, 0.15);
   
   --font-sans: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'Fira Code', monospace;
@@ -43,19 +43,29 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Global Colors Hierarchy - Premium Obsidian, Violet, and Sunset Orange Theme */
+h1, .gradient-text {
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-green));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+h2, h3, h4, h5, h6 {
+  color: #a78bfa !important; /* Soft Indigo-Violet for subheadings */
+}
+
+p, li, label, .form-label {
+  color: var(--text-secondary) !important; /* Soft Muted Slate for body content */
+}
+
 a {
   color: inherit;
   text-decoration: none;
   transition: var(--transition-fast);
 }
 
-/* Gradients and Typography Utility */
-.gradient-text {
-  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-green));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
+/* Typography Utility */
 .gradient-text-alt {
   background: linear-gradient(135deg, var(--accent-purple), var(--accent-cyan));
   -webkit-background-clip: text;

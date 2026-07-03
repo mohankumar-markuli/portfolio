@@ -25,7 +25,7 @@ export default function Skills() {
     },
     {
       title: 'Databases & Storage',
-      color: 'var(--accent-purple)',
+      color: 'var(--accent-cyan)',
       skills: [
         { name: 'MongoDB', level: 'Advanced' },
         { name: 'PostgreSQL', level: 'Advanced' },
@@ -34,7 +34,7 @@ export default function Skills() {
     },
     {
       title: 'Analytics & Machine Learning',
-      color: '#f59e0b', // Amber
+      color: 'var(--accent-green)',
       skills: [
         { name: 'Scikit-learn', level: 'Advanced' },
         { name: 'Pandas & Numpy', level: 'Advanced' },
@@ -44,7 +44,7 @@ export default function Skills() {
     },
     {
       title: 'Infrastructure & DevOps',
-      color: '#ec4899', // Pink
+      color: 'var(--accent-cyan)',
       skills: [
         { name: 'Azure', level: 'Intermediate' },
         { name: 'Linux Servers', level: 'Advanced' },
@@ -54,7 +54,7 @@ export default function Skills() {
     },
     {
       title: 'Frontend & Tooling',
-      color: '#3b82f6', // Blue
+      color: 'var(--accent-green)',
       skills: [
         { name: 'HTML5 & CSS3', level: 'Expert' },
         { name: 'Bootstrap', level: 'Expert' },
