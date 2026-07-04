@@ -3,7 +3,7 @@ import Head from 'next/head';
 export default function Experience() {
   const jobExperience = [
     {
-      company: 'ARC Hospitality Solutions Limited',
+      company: 'Freelance - Hospitality and Retail Industry',
       location: 'Liverpool, United Kingdom',
       role: 'Business Analyst Consultant',
       period: 'Feb 2024 - Jan 2026',
@@ -83,25 +83,25 @@ export default function Experience() {
           <h2 style={{ fontSize: '1.75rem', fontWeight: 700, marginBottom: '2.5rem', borderBottom: '1px solid var(--border-color)', paddingBottom: '0.5rem' }}>
             Work Experience
           </h2>
-          
+
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem', position: 'relative', paddingLeft: '1.5rem', borderLeft: '2px solid var(--border-color)' }}>
             {jobExperience.map((job, index) => (
               <div key={index} style={{ position: 'relative' }}>
                 {/* Timeline dot */}
-                <div 
-                  style={{ 
-                    position: 'absolute', 
-                    left: 'calc(-1.5rem - 6px)', 
-                    top: '6px', 
-                    width: '10px', 
-                    height: '10px', 
-                    borderRadius: '50%', 
+                <div
+                  style={{
+                    position: 'absolute',
+                    left: 'calc(-1.5rem - 6px)',
+                    top: '6px',
+                    width: '10px',
+                    height: '10px',
+                    borderRadius: '50%',
                     backgroundColor: 'var(--accent-green)',
                     border: '2px solid var(--bg-primary)',
                     boxShadow: '0 0 8px var(--accent-green)'
                   }}
                 ></div>
-                
+
                 <div className="card" style={{ padding: '1.5rem' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '0.75rem' }}>
                     <div>
@@ -138,25 +138,25 @@ export default function Experience() {
           <h2 style={{ fontSize: '1.75rem', fontWeight: 700, marginBottom: '2.5rem', borderBottom: '1px solid var(--border-color)', paddingBottom: '0.5rem' }}>
             Education
           </h2>
-          
+
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', position: 'relative', paddingLeft: '1.5rem', borderLeft: '2px solid var(--border-color)' }}>
             {education.map((edu, index) => (
               <div key={index} style={{ position: 'relative' }}>
                 {/* Timeline dot */}
-                <div 
-                  style={{ 
-                    position: 'absolute', 
-                    left: 'calc(-1.5rem - 6px)', 
-                    top: '6px', 
-                    width: '10px', 
-                    height: '10px', 
-                    borderRadius: '50%', 
+                <div
+                  style={{
+                    position: 'absolute',
+                    left: 'calc(-1.5rem - 6px)',
+                    top: '6px',
+                    width: '10px',
+                    height: '10px',
+                    borderRadius: '50%',
                     backgroundColor: 'var(--accent-cyan)',
                     border: '2px solid var(--bg-primary)',
                     boxShadow: '0 0 8px var(--accent-cyan)'
                   }}
                 ></div>
-                
+
                 <div className="card" style={{ padding: '1.5rem' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '0.5rem' }}>
                     <div>
