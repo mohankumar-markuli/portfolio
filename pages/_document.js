@@ -1,7 +1,7 @@
 import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
-  const basePath = process.env.NODE_ENV === 'production' ? '/mohankumar-markuli' : '';
+  const basePath = process.env.NODE_ENV === 'production' ? '/portfolio' : '';
   
   return (
     <Html lang="en">
