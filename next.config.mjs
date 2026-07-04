@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const isProd = process.env.NODE_ENV === 'production';
-const repoName = '/mohankumar-markuli';
+const repoName = '/portfolio';
 
 const nextConfig = {
   reactStrictMode: true,
