@@ -54,12 +54,12 @@ export default function Navbar() {
     <header className="header-nav" style={{ opacity: isHome && !isScrolled ? 0 : 1, transition: 'opacity 0.5s ease, background-color 0.3s ease' }}>
       <div className="container nav-container">
         <Link href="/" className="nav-logo" onClick={() => setIsOpen(false)}>
-          <span className="gradient-text">Mohankumar MC</span>
+          <span className="gradient-text">Mohankumar</span>
         </Link>
 
         {/* Mobile menu toggle */}
-        <button 
-          className="mobile-nav-toggle" 
+        <button
+          className="mobile-nav-toggle"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle navigation menu"
         >
@@ -72,8 +72,8 @@ export default function Navbar() {
             const isActive = router.pathname === link.path || router.pathname.startsWith(`${link.path}/`);
             return (
               <li key={link.path}>
-                <Link 
-                  href={link.path} 
+                <Link
+                  href={link.path}
                   className={`nav-link ${isActive ? 'active' : ''}`}
                   onClick={() => setIsOpen(false)}
                 >
