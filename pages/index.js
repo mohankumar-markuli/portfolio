@@ -265,7 +265,7 @@ export default function Home() {
               </svg>
             </a>
             <a 
-              href="https://www.linkedin.com/in/mohankumar-markuli" 
+              href="https://www.linkedin.com/in/mohankumar-mc/" 
               target="_blank" 
               rel="noopener noreferrer" 
               style={{ color: 'var(--text-secondary)' }}
@@ -279,7 +279,7 @@ export default function Home() {
               </svg>
             </a>
             <a 
-              href="https://instagram.com/mohankumar-markuli" 
+              href="https://instagram.com/rvishal.mohan" 
               target="_blank" 
               rel="noopener noreferrer" 
               style={{ color: 'var(--text-secondary)' }}
@@ -293,7 +293,7 @@ export default function Home() {
               </svg>
             </a>
             <a 
-              href="https://www.snapchat.com/add/mohankumar-markuli" 
+              href="https://www.snapchat.com/add/mohankumar.mc" 
               target="_blank" 
               rel="noopener noreferrer" 
               style={{ color: 'var(--text-secondary)' }}
