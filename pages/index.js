@@ -444,8 +444,8 @@ export default function Home() {
             <Link href="/contact" className="btn btn-primary" style={{ padding: '0.75rem 2rem', fontSize: '1rem' }}>
               Get in Touch / Hire Me
             </Link>
-            <Link 
-              href="/resume.pdf" 
+            <a 
+              href={`${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/resume.pdf`} 
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-secondary" 
@@ -474,7 +474,7 @@ export default function Home() {
                 <circle cx="12" cy="12" r="3" />
               </svg>
               View Resume
-            </Link>
+            </a>
           </div>
         </div>
       </section>
