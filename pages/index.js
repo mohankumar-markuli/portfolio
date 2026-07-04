@@ -424,12 +424,12 @@ export default function Home() {
               <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Read articles on AI ethics, big data, EV tech, and database systems</p>
             </Link>
 
-            <Link href="/portfolio" className="card" style={{ textAlign: 'center', display: 'block' }}>
+            <Link href="/projects" className="card" style={{ textAlign: 'center', display: 'block' }}>
               <h4 style={{ color: 'var(--accent-cyan)', marginBottom: '0.5rem', fontWeight: 600 }}>Projects</h4>
               <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>View projects and tech reports</p>
             </Link>
 
-            <Link href="/photography" className="card" style={{ textAlign: 'center', display: 'block' }}>
+            <Link href="/gallery" className="card" style={{ textAlign: 'center', display: 'block' }}>
               <h4 style={{ color: 'var(--accent-cyan)', marginBottom: '0.5rem', fontWeight: 600 }}>Gallery</h4>
               <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Browse university, work, and network photos</p>
             </Link>

@@ -39,8 +39,8 @@ export default function Navbar() {
     { name: 'Skills', path: '/skills' },
     { name: 'Experience', path: '/experience' },
     { name: 'Blogs', path: '/blog' },
-    { name: 'Projects', path: '/portfolio' },
-    { name: 'Gallery', path: '/photography' },
+    { name: 'Projects', path: '/projects' },
+    { name: 'Gallery', path: '/gallery' },
     { name: 'Feedback', path: '/feedback' },
     { name: 'Contact', path: '/contact' },
   ];
