@@ -173,7 +173,8 @@ export async function getStaticProps() {
         const ext = path.extname(file).toLowerCase();
         return ['.jpg', '.jpeg', '.png', '.webp'].includes(ext);
       }).map(file => {
-        const url = `/images/${file}`;
+        const basePath = process.env.NODE_ENV === 'production' ? '/mohankumar-markuli' : '';
+        const url = `${basePath}/images/${file}`;
         const nameWithoutExt = path.basename(file, path.extname(file)); // e.g. "2014-02"
         
         let dateFormatted = nameWithoutExt;
