@@ -4,28 +4,46 @@ import ProjectCard from '@/components/ProjectCard';
 export default function Portfolio() {
   const projects = [
     {
-      title: 'PDF Loader RAG Pipeline',
-      description: 'An end-to-end Retrieval-Augmented Generation pipeline that loads PDF documents, chunks and embeds content into a vector store, and retrieves semantically relevant context to ground LLM responses, reducing hallucinations and enabling accurate document-based question answering.',
-      tags: ['Python', 'LangChain', 'OpenAI API', 'Ollama', 'Vector Store'],
-      githubUrl: 'https://github.com/mohankumar-markuli/pdf-loader-rag-pipeline'
+      title: 'GenAI & AgenticAI (RAG Pipeline)',
+      description: 'Python and GenAI project focusing on building a Retrieval-Augmented Generation (RAG) Pipeline.',
+      tags: ['Python', 'LangChain', 'OpenAI API', 'Vector Store'],
+      githubUrl: 'https://github.com/mohankumar-markuli/GenAI-AgenticAI/tree/main/RAG'
     },
     {
-      title: 'News Aggregator API',
-      description: 'A personalized news aggregation backend API with JWT authentication, user preference management, in-memory caching with background refresh to reduce external API calls, and full unit and integration test coverage.',
-      tags: ['Node.js', 'Express', 'MongoDB', 'JWT', 'GNews API', 'Unit Testing'],
-      githubUrl: 'https://github.com/mohankumar-markuli/news-aggregator-api'
+      title: 'Virtual Event Management Platform',
+      description: 'A scalable backend application for managing virtual events with secure authentication, role-based access control, event registrations, email notifications, and complete automated testing.',
+      tags: ['Node.js', 'Express', 'Authentication', 'RBAC', 'Testing'],
+      githubUrl: 'https://github.com/mohankumar-markuli/Virtual-Event-Management-Platform'
     },
     {
-      title: 'FinEdge Personal Finance & Expense Tracker API',
-      description: 'A personal finance API with transaction CRUD operations, advanced filtering across five parameters, and MongoDB aggregation pipelines delivering monthly and yearly analytics with pagination support.',
+      title: 'FinEdge',
+      description: 'A backend API for managing personal finances including authentication, transactions, filtering, and analytics.',
       tags: ['Node.js', 'Express', 'MongoDB', 'JWT', 'Aggregation Pipelines'],
-      githubUrl: 'https://github.com/mohankumar-markuli/finedge-finance-api'
+      githubUrl: 'https://github.com/mohankumar-markuli/FinEdge'
     },
     {
-      title: 'devTinder Developer Networking Platform Backend',
-      description: 'A robust developer matchmaking platform backend featuring JWT authentication, profile management, and a bi-directional connection request system with four interaction states enabling dynamic user feed generation.',
+      title: 'devTinder Backend',
+      description: 'Backend service for a developer matchmaking platform providing authentication, profile management, and a connection request system supporting interested/ignore interactions.',
       tags: ['Node.js', 'Express', 'MongoDB', 'JWT', 'Relation States'],
-      githubUrl: 'https://github.com/mohankumar-markuli/devtinder-backend'
+      githubUrl: 'https://github.com/mohankumar-markuli/devTinder-Backend'
+    },
+    {
+      title: 'devTinder Web',
+      description: 'Frontend web application for DevTinder built using React, Vite, Tailwind CSS, Daisy UI, and React Router DOM.',
+      tags: ['React', 'Vite', 'Tailwind CSS', 'Daisy UI'],
+      githubUrl: 'https://github.com/mohankumar-markuli/devTinder-web'
+    },
+    {
+      title: 'Task Manager API',
+      description: 'A RESTful API built using Node.js and Express.js for managing tasks. Features include creating, retrieving, updating, deleting, filtering, sorting, and categorizing tasks.',
+      tags: ['Node.js', 'Express.js', 'REST API'],
+      githubUrl: 'https://github.com/mohankumar-markuli/task-manager-api'
+    },
+    {
+      title: 'Advance Traffic Management System',
+      description: 'An academic final project building an Advance Traffic Management System Using Google Cloud. It uses IoT and Infrared sensors to make traffic management systems work dynamically and efficiently.',
+      tags: ['IoT', 'Google Cloud', 'Sensors', 'Python'],
+      githubUrl: 'https://github.com/mohankumar-markuli/BE-Academic-Final-Project'
     }
   ];
 
