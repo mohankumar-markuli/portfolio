@@ -178,28 +178,22 @@ export default function Skills() {
                 {category.title}
               </h3>
               
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', flexGrow: 1 }}>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', flexGrow: 1, alignContent: 'flex-start' }}>
                 {category.skills.map((skill, skillIndex) => (
-                  <div key={skillIndex}>
-                    {/* Header: Logo, Name, and Level on top of bar */}
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.9rem', marginBottom: '0.5rem' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                        {renderSkillIcon(skill, category.color)}
-                        <span style={{ color: 'var(--text-primary)', fontWeight: 500 }}>{skill.name}</span>
-                      </div>
-                      <span style={{ color: category.color, fontSize: '0.8rem', fontWeight: 600 }}>{skill.level}</span>
-                    </div>
-                    {/* Visual Meter */}
-                    <div style={{ height: '5px', background: 'rgba(255,255,255,0.04)', borderRadius: '2px', overflow: 'hidden' }}>
-                      <div 
-                        style={{ 
-                          height: '100%', 
-                          background: category.color, 
-                          width: skill.level === 'Expert' ? '95%' : skill.level === 'Advanced' ? '80%' : skill.level === 'Intermediate' ? '60%' : '40%',
-                          borderRadius: '2px'
-                        }}
-                      ></div>
-                    </div>
+                  <div 
+                    key={skillIndex} 
+                    style={{ 
+                      display: 'flex', 
+                      alignItems: 'center', 
+                      gap: '0.5rem', 
+                      backgroundColor: 'rgba(255,255,255,0.03)', 
+                      padding: '0.5rem 0.75rem', 
+                      borderRadius: '8px', 
+                      border: '1px solid rgba(255,255,255,0.05)' 
+                    }}
+                  >
+                    {renderSkillIcon(skill, category.color)}
+                    <span style={{ color: 'var(--text-primary)', fontSize: '0.9rem', fontWeight: 500 }}>{skill.name}</span>
                   </div>
                 ))}
               </div>
