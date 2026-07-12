@@ -445,7 +445,7 @@ export default function Home() {
               Get in Touch / Hire Me
             </Link>
             <a 
-              href={`${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/resume.pdf`} 
+              href={`${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/Mohankumar.pdf`} 
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-secondary" 
