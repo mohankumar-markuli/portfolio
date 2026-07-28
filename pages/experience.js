@@ -3,25 +3,6 @@ import Head from 'next/head';
 export default function Experience() {
   const jobExperience = [
     {
-      company: 'Freelance — Data & Business Analytics Consulting',
-      location: 'Liverpool, United Kingdom',
-      role: 'Business Analyst Consultant',
-      period: 'Feb 2024 - Jan 2026',
-      details: [
-        'Developed Python-based ETL data pipeline analyzing worker performance across 15+ retail and logistics roles, processing 500+ active freelance workers through exploratory data analysis, modeling to predict reliability metrics using Knime and Dashboards with PowerBI.',
-        'Designed transparent per-shift compensation strategy system with base and holiday pay differentials, validated using Python data quality checks on existing schema, increasing freelancer platform adoption by 3x and reducing worker churn versus competing agencies pay rates.'
-      ]
-    },
-    {
-      company: 'Retail and logistics Operations',
-      location: 'Liverpool, United Kingdom',
-      role: 'Multi-Employer Contract Work',
-      period: 'Oct 2022 - Jan 2024',
-      details: [
-        'Operated in fast-paced, customer-facing environments requiring quick problem-solving, accuracy under time pressure, and coordination across multiple employers/agencies simultaneously — directly transferable to delivering reliably in fast-moving engineering sprints.'
-      ]
-    },
-    {
       company: 'Infosys Limited',
       location: 'Bengaluru, India',
       role: 'Systems Engineer',
@@ -83,7 +64,7 @@ export default function Experience() {
             Professional <span className="gradient-text">Journey</span>
           </h1>
           <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', maxWidth: '600px', margin: '0 auto' }}>
-            A timeline of my systems engineering, analytics consulting, and computer science education.
+            A timeline of my systems engineering experience, software engineering internships, and computer science education.
           </p>
         </div>
 
